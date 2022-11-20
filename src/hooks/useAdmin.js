@@ -1,7 +1,8 @@
+import { is } from "date-fns/locale";
 import { useEffect, useState } from "react"
 
 const useAdmin = email => {
-    const [isAdmin, setIsAdmin] = useState(false);
+    const [isAdmin, setIsAdmin] = useState(true);
     const [isAdminLoading, setIsAdminLoading] = useState(true);
     useEffect(() => {
         if (email) {
