@@ -30,7 +30,7 @@ const AddDoctor = () => {
         const image = data.image[0]; 
         const formData = new FormData(); 
         formData.append('image', image); 
-        const url = `https://api.imgbb.com/1/upload?expiration=600&key=${imageHostKey}`
+        const url = `https://api.imgbb.com/1/upload?key=${imageHostKey}`
         fetch(url, {
             method: 'POST', 
             body: formData
@@ -40,6 +40,27 @@ const AddDoctor = () => {
             console.log(imgData)
             if(imgData.success){
                 console.log(imgData.data.url)
+                const doctor = {
+                    name: data.name,
+                    email: data.email,
+                    specialty:data.specialty,
+                    image:imgData.data.url
+                }
+                //Save Information to the database : 
+                fetch(`http://localhost:5000/doctors`,{
+                    method: 'POST', 
+                    headers: {
+                        'content-type': 'application/json', 
+                        authorization: `bearer ${localStorage.getItem('accessToken')}`
+                    }, 
+                        body: JSON.stringify(doctor)
+                })
+                .then(res => res.json())
+                .then(result => {
+                    console.log(result); 
+                    toast.success(`${data.name} is added successfully`)
+                    navigate('/dashboard/managedoctors')
+                })
             }
         })
 
