@@ -11,7 +11,7 @@ const AddDoctor = () => {
 
      const imageHostKey = '02d5711747adc0d8f3aa882f25f0e1e7';
      
-     console.log(imageHostKey)
+    //  console.log(imageHostKey)
 
      const {data: specialties , isLoading} = useQuery(
         {
