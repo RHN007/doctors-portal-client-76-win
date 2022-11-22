@@ -8,10 +8,11 @@ const CheckoutForm = ({booking}) => {
     const [processing, setProcessing] = useState(false);
     const [transactionId, setTransactionId] = useState('');
     const [clientSecret, setClientSecret] = useState("");
-    const {price} = booking
+
     
     const stripe = useStripe()
     const elements = useElements()
+    const { price, email, patient, _id } = booking;
 
 
     useEffect(() => {
@@ -51,6 +52,20 @@ const CheckoutForm = ({booking}) => {
     }else {
         setCardError('')
     }
+    
+const { paymentIntent, error: confirmError } = await stripe.confirmCardPayment(
+    clientSecret,
+    {
+        payment_method: {
+            card: card,
+            billing_details: {
+                name: patient,
+                email: email
+            },
+        },
+    },
+);
+
 }
 
 
