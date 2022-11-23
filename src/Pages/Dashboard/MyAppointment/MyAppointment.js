@@ -45,6 +45,7 @@ const MyAppointment = () => {
                                 <td>{booking.appointmentDate}</td>
                                 <td>{booking.slot}</td>
                                 <td>
+                                    ${booking.price}
                                     {
                                         booking.price && !booking.paid && 
                                         
@@ -53,7 +54,7 @@ const MyAppointment = () => {
                                     >Pay</button></Link>
                                     }
                                     {
-                                        booking.price && booking.paid && <span className='text-primary'>Paid</span>
+                                        booking.price && booking.paid && <span className='text-green-500 '>Paid</span>
                                     }
                                 </td>
                             </tr>)
