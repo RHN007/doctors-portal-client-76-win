@@ -57,7 +57,7 @@ const SignUp = () => {
     
 
     return (
-        <div className='h-[800px] flex justify-center items-center'>
+        <div className='flex justify-center items-center'>
             <div className='w-96 p-7'>
                 <h2 className='text-xl text-center'>Sign Up</h2>
                 <form onSubmit={handleSubmit(handleSignUp)}>
@@ -84,7 +84,7 @@ const SignUp = () => {
                         })} className="input input-bordered w-full max-w-xs" />
                         {errors.password && <p className='text-red-500'>{errors.password.message}</p>}
                     </div>
-                    <input className='btn btn-accent w-full mt-4' value="Sign Up" type="submit" />
+                    <input className='btn btn-accent mt-4' value="Sign Up" type="submit" />
                     {signUpError && <p className='text-red-600'>{signUpError}</p>}
                 </form>
                 <p>Already have an account <Link className='text-secondary' to="/login">Please Login</Link></p>
